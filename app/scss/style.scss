@@ -1,0 +1,11 @@
+@use "fonts";
+@use "reset";
+@use "vars";
+@use "global";
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  color: vars.$mainTextColor;
+  line-height: 1.5;
+}
