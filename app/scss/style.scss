@@ -5,7 +5,140 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   color: vars.$mainTextColor;
-  line-height: 1.5;
+}
+
+.header {
+  padding: 25px 0;
+  color: vars.$secondaryTextColor;
+  font-size: 16px;
+  @media (max-width: vars.$tablet) {
+    padding: 10px 0;
+  }
+  // .header__container
+  &__container {
+    padding-top: 12px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  // .header__logo
+  &__logo {
+    position: relative;
+    z-index: 10;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  // .header__lang
+  &__lang {
+    display: flex;
+    position: relative;
+    z-index: 10;
+  }
+  // .header__lang-item
+  &__lang-item {
+  }
+  // .header__lang-link
+  &__lang-link {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: all 0.3s;
+    &:hover {
+      text-decoration-color: inherit;
+    }
+    &--active {
+      font-weight: 700;
+    }
+  }
+  // .header__menu
+  &__menu {
+  }
+  // .header__actions
+  &__actions {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  // .header__actions-item
+  &__actions-item {
+  }
+  // .header__actions-link
+  &__actions-link {
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.logo {
+  // .logo__img
+  &__img {
+  }
+}
+
+.menu {
+  @media (max-width: 830px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    padding: 190px 30px 50px;
+    background-color: vars.$whiteColor;
+    transform: translateX(100%);
+    transition: transform 0.5s;
+    &--active {
+      transform: translateX(0%);
+    }
+  }
+  // .menu__list
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    @media (max-width: vars.$tablet) {
+      gap: 20px;
+    }
+    @media (max-width: 830px) {
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 40px;
+    }
+  }
+  // .menu__item
+  &__item {
+  }
+  // .menu__link
+  &__link {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: all 0.3s;
+    &:hover {
+      text-decoration-color: inherit;
+    }
+    @media (max-width: 830px) {
+      font-size: 24px;
+      text-align: end;
+    }
+  }
+}
+
+.menu-btn {
+  display: none;
+  @media (max-width: 830px) {
+    display: block;
+    position: relative;
+    z-index: 10;
+  }
 }
