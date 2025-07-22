@@ -1,13 +1,12 @@
-const menu = document.querySelector(".menu");
 const menuBtn = document.querySelector(".menu-btn");
 const menuLink = document.querySelectorAll(".menu__link");
 
 menuBtn.addEventListener("click", () => {
-  menu.classList.toggle("menu--active");
+  document.body.classList.toggle("menu-open");
 });
 
 menuLink.forEach((el) => {
   el.addEventListener("click", () => {
-    menu.classList.contains("menu--active") ? menu.classList.remove("menu--active") : null;
+    document.body.classList.contains("menu-open") ? document.body.classList.remove("menu-open") : null;
   });
 });

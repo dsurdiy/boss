@@ -7,7 +7,14 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 20px;
   color: vars.$mainTextColor;
+  &.menu-open {
+    overflow: hidden;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
 }
+
+// ====== HEADER ========================================================================================
 
 .header {
   padding: 25px 0;
@@ -15,6 +22,24 @@ body {
   font-size: 16px;
   @media (max-width: vars.$tablet) {
     padding: 10px 0;
+  }
+  position: relative;
+  @media (max-width: 830px) {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s;
+      .menu-open & {
+        opacity: 1;
+      }
+    }
   }
   // .header__container
   &__container {
@@ -48,8 +73,10 @@ body {
     text-decoration: underline;
     text-decoration-color: transparent;
     transition: all 0.3s;
-    &:hover {
-      text-decoration-color: inherit;
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration-color: inherit;
+      }
     }
     &--active {
       font-weight: 700;
@@ -73,8 +100,10 @@ body {
   // .header__actions-link
   &__actions-link {
     transition: transform 0.3s;
-    &:hover {
-      transform: scale(1.1);
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -87,17 +116,18 @@ body {
 
 .menu {
   @media (max-width: 830px) {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 5;
+    overflow: auto;
     padding: 190px 30px 50px;
     background-color: vars.$whiteColor;
     transform: translateX(100%);
     transition: transform 0.5s;
-    &--active {
+    .menu-open & {
       transform: translateX(0%);
     }
   }
@@ -124,8 +154,10 @@ body {
     text-decoration: underline;
     text-decoration-color: transparent;
     transition: all 0.3s;
-    &:hover {
-      text-decoration-color: inherit;
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration-color: inherit;
+      }
     }
     @media (max-width: 830px) {
       font-size: 24px;
@@ -140,5 +172,211 @@ body {
     display: block;
     position: relative;
     z-index: 10;
+  }
+}
+
+// ======= FOOTER =======================================================================================
+
+.footer {
+  color: vars.$whiteColor;
+  background-color: vars.$mainBgColor;
+  font-size: 16px;
+  // .footer__container
+  &__container {
+  }
+  // .footer__nav
+  &__nav {
+    padding-top: 55px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #cdcdcd;
+    @media (max-width: vars.$tablet) {
+      padding: 30px 0;
+    }
+    @media (max-width: vars.$mobile) {
+      padding: 70px 0 30px;
+    }
+  }
+  // .footer__nav-list
+  &__nav-list {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 87px;
+    row-gap: 10px;
+    @media (max-width: vars.$tablet) {
+      justify-content: space-between;
+      column-gap: 30px;
+    }
+    @media (max-width: vars.$mobile) {
+      justify-content: center;
+    }
+  }
+  // .footer__nav-item
+  &__nav-item {
+    &--logo {
+      @media (max-width: vars.$mobile) {
+        position: absolute;
+        top: -45px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  // .footer__nav-link
+  &__nav-link {
+    position: relative;
+    padding-bottom: 5px;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      opacity: 0.35;
+      transition: opacity 0.3s;
+    }
+    @media (any-hover: hover) {
+      &:hover::after {
+        opacity: 0;
+      }
+    }
+  }
+  // .footer__contact
+  &__contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 83px;
+    row-gap: 15px;
+    padding: 50px 0;
+    @media (max-width: vars.$pc) {
+      column-gap: 50px;
+    }
+    @media (max-width: vars.$tablet) {
+      padding: 30px 0;
+    }
+  }
+  // .footer__contact-item
+  &__contact-item {
+    &--location {
+      min-width: 160px;
+      @media (max-width: vars.$pc) {
+        min-width: auto;
+      }
+    }
+    &--email {
+      min-width: 253px;
+    }
+  }
+  // .footer__contact-title
+  &__contact-title {
+    opacity: 0.5;
+    margin-bottom: 20px;
+    @media (max-width: vars.$mobileSmall) {
+      margin-bottom: 10px;
+    }
+  }
+  // .footer__contact-address
+  &__contact-address {
+    font-style: normal;
+    line-height: 155%;
+  }
+  // .footer__contact-box
+  &__contact-box {
+  }
+  // .footer__contact-link
+  &__contact-link {
+    display: block;
+    line-height: 137.5%;
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  // .footer__contact-form
+  &__contact-form {
+    position: relative;
+  }
+  // .footer__contact-input
+  &__contact-input {
+    width: 100%;
+    padding: 1px 25px 5px 0;
+    border-bottom: 1px solid #cdcdcd;
+    background-color: transparent;
+    color: vars.$whiteColor;
+    line-height: 137.5%;
+    &::placeholder {
+      color: vars.$whiteColor;
+      font-size: 16px;
+    }
+  }
+  // .footer__contact-btn
+  &__contact-btn {
+    position: absolute;
+    top: 6px;
+    right: 0;
+  }
+  // .footer__social-list
+  &__social-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  // .footer__social-item
+  &__social-item {
+  }
+  // .footer__social-link
+  &__social-link {
+    transition: transform 0.3s;
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  // .footer__copy
+  &__copy {
+    background-color: vars.$secondaryTextColor;
+    font-size: 11px;
+    .footer__container {
+      padding: 7px 75px 9px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: 50px;
+      row-gap: 10px;
+      @media (max-width: vars.$mobile) {
+        padding: 7px 10px 9px;
+        justify-content: center;
+      }
+    }
+  }
+  // .footer__copy-text
+  &__copy-text {
+    line-height: 1.3;
+  }
+  // .footer__copy-list
+  &__copy-list {
+    display: flex;
+    gap: 15px;
+  }
+  // .footer__copy-item
+  &__copy-item {
+    &:not(:last-child) {
+      padding-right: 15px;
+      border-right: 1px solid;
+    }
+  }
+  // .footer__copy-link
+  &__copy-link {
   }
 }
