@@ -190,7 +190,7 @@ body {
     padding-bottom: 60px;
     border-bottom: 1px solid #cdcdcd;
     @media (max-width: vars.$tablet) {
-      padding: 30px 0;
+      padding: 50px 0;
     }
     @media (max-width: vars.$mobile) {
       padding: 70px 0 30px;
@@ -378,5 +378,78 @@ body {
   }
   // .footer__copy-link
   &__copy-link {
+  }
+}
+
+// ========= HERO ===========================================================================================
+
+.hero {
+  position: relative;
+  // .hero__container
+  &__container {
+    min-height: 879px;
+    display: flex;
+    align-items: center;
+    padding: 150px 10px;
+    @media (max-width: vars.$mobile) {
+      min-height: 750px;
+      padding: 100px 10px;
+    }
+    @media (max-width: vars.$mobileSmall) {
+      min-height: 600px;
+      padding: 50px 10px;
+    }
+  }
+  // .hero__content
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 519px;
+  }
+  // .hero__title
+  &__title {
+    font-family: "Lora", serif;
+    font-size: 75px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: vars.$secondaryTextColor;
+    &:not(:last-child) {
+      margin-bottom: 33px;
+    }
+    @media (max-width: vars.$mobile) {
+      font-size: 60px;
+    }
+    @media (max-width: vars.$mobileSmall) {
+      font-size: 48px;
+    }
+  }
+  // .hero__link
+  &__link {
+    padding: 12px 38px;
+    color: vars.$whiteColor;
+    background-color: vars.$secondaryTextColor;
+    line-height: 1.35;
+    border-radius: 3px;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: all 0.3s;
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration-color: inherit;
+      }
+    }
+  }
+  // .hero__img
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+    @media (max-width: vars.$tablet) {
+      opacity: 0.8;
+    }
   }
 }
